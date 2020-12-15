@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 
-import { Overview, Annotation, Labels, Data } from "../../pages";
+import { Overview, Annotation, Labels, Data, Models } from "../../pages";
 import Copyright from "./Copyright";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +34,7 @@ const ContentsContainer = () => {
         <Route exact path="/data" component={Data} />
         <Route exact path="/labels" component={Labels} />
         <Route exact path="/annotation" component={Annotation} />
+        <Route exact path="/models" component={Models} />
         <Box pt={4}>
           <Copyright />
         </Box>

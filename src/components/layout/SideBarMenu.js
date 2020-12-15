@@ -4,9 +4,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
-import BarChartIcon from "@material-ui/icons/BarChart";
+import StorageIcon from "@material-ui/icons/Storage";
+import LabelIcon from "@material-ui/icons/Label";
+import EditAttributesIcon from "@material-ui/icons/EditAttributes";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 
@@ -25,27 +25,27 @@ export const MainListItems = () => {
       </ListItem>
       <ListItem button onClick={() => history.push("/data")}>
         <ListItemIcon>
-          <ShoppingCartIcon />
+          <StorageIcon />
         </ListItemIcon>
         <ListItemText primary="Data" />
       </ListItem>
       <ListItem button onClick={() => history.push("/labels")}>
         <ListItemIcon>
-          <PeopleIcon />
+          <LabelIcon />
         </ListItemIcon>
         <ListItemText primary="Labels" />
       </ListItem>
       <ListItem button onClick={() => history.push("/annotation")}>
         <ListItemIcon>
-          <BarChartIcon />
+          <EditAttributesIcon />
         </ListItemIcon>
         <ListItemText primary="Annotation" />
       </ListItem>
-      <ListItem button>
+      <ListItem button onClick={() => history.push("/models")}>
         <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>
-        <ListItemText primary="Integrations" />
+        <ListItemText primary="Models" />
       </ListItem>
     </div>
   );

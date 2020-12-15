@@ -99,7 +99,7 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Overview></Overview>
+          <Overview />
           <Box pt={4}>
             <Copyright />
           </Box>

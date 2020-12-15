@@ -1,7 +1,8 @@
 import React from "react";
+import NavigationBreadcrumbs from "../components/layout/Breadcrumbs";
 
 const Models = () => {
-  return <div>Models</div>;
+  return <NavigationBreadcrumbs firstName={"Models"} firstLink={"/models"} />;
 };
 
 export default Models;

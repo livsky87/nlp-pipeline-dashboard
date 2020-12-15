@@ -10,9 +10,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
-import Copyright from "./components/Copyright";
-import HeaderBar from "./components/HeaderBar";
-import { mainListItems, secondaryListItems } from "./components/SideBarMenu";
+import Copyright from "./components/layout/Copyright";
+import HeaderBar from "./components/layout/HeaderBar";
+import {
+  mainListItems,
+  secondaryListItems,
+} from "./components/layout/SideBarMenu";
 import Overview from "./pages/Overview";
 
 const drawerWidth = 240;

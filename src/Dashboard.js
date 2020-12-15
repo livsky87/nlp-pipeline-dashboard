@@ -3,20 +3,17 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
-import Box from "@material-ui/core/Box";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import Container from "@material-ui/core/Container";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-
-import Copyright from "./components/layout/Copyright";
 import HeaderBar from "./components/layout/HeaderBar";
 import {
-  mainListItems,
+  MainListItems,
   secondaryListItems,
 } from "./components/layout/SideBarMenu";
-import Overview from "./pages/Overview";
+
+import ContentsContainer from "./components/layout/ContentsContainer";
 
 const drawerWidth = 240;
 
@@ -92,19 +89,13 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        <List>
+          <MainListItems />
+        </List>
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Overview />
-          <Box pt={4}>
-            <Copyright />
-          </Box>
-        </Container>
-      </main>
+      <ContentsContainer />
     </div>
   );
 }

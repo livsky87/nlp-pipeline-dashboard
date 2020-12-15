@@ -1,6 +1,6 @@
 import React from "react";
 
-const Annotation = ({}) => {
+const Annotation = () => {
   return <div>Annotation</div>;
 };
 

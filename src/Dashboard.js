@@ -13,7 +13,7 @@ import {
   secondaryListItems,
 } from "./components/layout/SideBarMenu";
 
-import ContentsContainer from "./components/layout/ContentsContainer";
+import Routers from "./components/layout/Routers";
 
 const drawerWidth = 240;
 
@@ -92,7 +92,7 @@ export default function Dashboard() {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
-      <ContentsContainer />
+      <Routers />
     </div>
   );
 }

@@ -5,8 +5,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import HeaderBar from "./components/layout/HeaderBar";
 import {
   MainListItems,
@@ -62,17 +60,15 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
+
+  const handleDrawer = () => {
+    setOpen(!open);
   };
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <HeaderBar open={open} handleDrawerOpen={handleDrawerOpen} />
+      <HeaderBar open={open} handleDrawer={handleDrawer} />
       <Drawer
         variant="permanent"
         classes={{
@@ -80,11 +76,7 @@ export default function Dashboard() {
         }}
         open={open}
       >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
+        <div className={classes.toolbarIcon} />
         <Divider />
         <List>
           <MainListItems />

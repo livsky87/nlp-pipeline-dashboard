@@ -5,8 +5,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import Badge from "@material-ui/core/Badge";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import AppBar from "@material-ui/core/AppBar";
 import { makeStyles } from "@material-ui/core/styles";
+import { signInWithGoogle, auth } from "../../utils/firebase";
+import { Avatar, Button, Popover } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -24,10 +27,37 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  avatarSmall: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
+  userBox: {
+    padding: theme.spacing(2),
+  },
 }));
 
 export default function HeaderBar({ handleDrawer }) {
   const classes = useStyles();
+
+  const [user, setUser] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
+  React.useEffect(() => {
+    auth.onAuthStateChanged((user) => setUser(user));
+  }, []);
+
+  console.log(user);
 
   return (
     <AppBar position="absolute" className={classes.appBar}>
@@ -55,6 +85,42 @@ export default function HeaderBar({ handleDrawer }) {
             <NotificationsIcon />
           </Badge>
         </IconButton>
+
+        {user ? (
+          <div>
+            <IconButton color="inherit" onClick={handleClick}>
+              <Avatar className={classes.avatarSmall} src={user.photoURL} />
+            </IconButton>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+            >
+              <Typography className={classes.userBox}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => auth.signOut()}
+                >
+                  Logout
+                </Button>
+              </Typography>
+            </Popover>
+          </div>
+        ) : (
+          <IconButton color="inherit" onClick={signInWithGoogle}>
+            <AccountCircleIcon />
+          </IconButton>
+        )}
       </Toolbar>
     </AppBar>
   );

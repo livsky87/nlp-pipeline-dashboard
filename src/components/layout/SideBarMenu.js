@@ -23,6 +23,12 @@ export const MainListItems = () => {
         </ListItemIcon>
         <ListItemText primary="Overview" />
       </ListItem>
+      <ListItem button onClick={() => history.push("/connections")}>
+        <ListItemIcon>
+          <StorageIcon />
+        </ListItemIcon>
+        <ListItemText primary="Connections" />
+      </ListItem>
       <ListItem button onClick={() => history.push("/data")}>
         <ListItemIcon>
           <StorageIcon />

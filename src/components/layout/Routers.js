@@ -1,6 +1,13 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { Annotation, Data, Labels, Models, Overview } from "../../pages";
+import {
+  Annotation,
+  Data,
+  Connections,
+  Labels,
+  Models,
+  Overview,
+} from "../../pages";
 import { PageContainer } from "./ContentsContainer";
 
 const Routers = () => {
@@ -11,6 +18,7 @@ const Routers = () => {
       </Route>
       <Route exact path="/overview" component={Overview} />
       <Route exact path="/data" component={Data} />
+      <Route exact path="/connections" component={Connections} />
       <Route exact path="/labels" component={Labels} />
       <Route exact path="/annotation" component={Annotation} />
       <Route exact path="/models" component={Models} />

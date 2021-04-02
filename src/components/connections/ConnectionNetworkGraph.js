@@ -1,7 +1,7 @@
 import ForceGraph2D from "react-force-graph-2d";
 import React, { useMemo, useState, useCallback, useRef } from "react";
 
-const ConnectionNetworkGraph = () => {
+const ConnectionNetworkGraph = ({ selectedNodes, handleSelectedNodes }) => {
   const N = 80;
   const NODE_R = 5;
 
@@ -39,7 +39,6 @@ const ConnectionNetworkGraph = () => {
   const [highlightNodes, setHighlightNodes] = useState(new Set());
   const [highlightLinks, setHighlightLinks] = useState(new Set());
   const [hoverNode, setHoverNode] = useState(null);
-  const [selectedNodes, setSelectedNodes] = useState(new Set());
 
   const updateHighlight = () => {
     setHighlightNodes(highlightNodes);
@@ -84,7 +83,6 @@ const ConnectionNetworkGraph = () => {
   );
 
   function paint({ id, x, y }, color, ctx) {
-    console.log(id === 0);
     ctx.beginPath();
     ctx.arc(x, y, id === 0 ? NODE_R : NODE_R * 0.5, 0, 2 * Math.PI, false);
     ctx.fill();
@@ -113,7 +111,7 @@ const ConnectionNetworkGraph = () => {
       nodeLabel={"id"}
       //nodeVal={"size"}
       cooldownTicks={100}
-      //autoPauseRedraw={false}
+      autoPauseRedraw={false}
       linkWidth={(link) => (highlightLinks.has(link) ? 5 : 1)}
       linkDirectionalParticles={1}
       linkDirectionalParticleWidth={(link) =>
@@ -125,9 +123,6 @@ const ConnectionNetworkGraph = () => {
       onLinkHover={handleLinkHover}
       onEngineStop={() => graphRef.current.zoomToFit(200)}
       onNodeClick={(node, event) => {
-        console.log(node);
-        console.log(event);
-        console.log(selectedNodes);
         if (event.ctrlKey || event.shiftKey || event.altKey) {
           // multi-selection
           selectedNodes.has(node)
@@ -139,7 +134,8 @@ const ConnectionNetworkGraph = () => {
           selectedNodes.clear();
           !untoggle && selectedNodes.add(node);
         }
-        setSelectedNodes(selectedNodes);
+
+        handleSelectedNodes(selectedNodes);
       }}
       onNodeDrag={(node, translate) => {
         if (selectedNodes.has(node)) {

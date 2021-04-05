@@ -7,7 +7,12 @@ import React, {
   useEffect,
 } from "react";
 
-const ConnectionNetworkGraph = ({ selectedNodes, handleSelectedNodes }) => {
+const ConnectionNetworkGraph = ({
+  selectedNodes,
+  handleSelectedNodes,
+  setNodeCount,
+  graphMode,
+}) => {
   const N = 30;
   const NODE_R = 5;
 
@@ -69,6 +74,7 @@ const ConnectionNetworkGraph = ({ selectedNodes, handleSelectedNodes }) => {
       });
 
       count++;
+      setNodeCount(N + count);
       if (count >= max) clearInterval(id);
     }, 100);
 
@@ -149,6 +155,7 @@ const ConnectionNetworkGraph = ({ selectedNodes, handleSelectedNodes }) => {
       width={350}
       height={350}
       nodeLabel={"id"}
+      dagMode={graphMode}
       //nodeVal={"size"}
       cooldownTicks={100}
       autoPauseRedraw={false}

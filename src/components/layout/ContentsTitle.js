@@ -6,24 +6,35 @@ const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   titleContainer: {
     display: "flex",
-    minHeight: "40px",
+    minHeight: 50,
     alignItems: "center",
   },
   title: {
+    minWidth: 150,
     fontSize: 16,
     fontWeight: "bold",
     marginLeft: theme.spacing(3),
   },
+  optionArea: {
+    display: "flex",
+    flex: "auto",
+    justifyContent: "right",
+    margin: 5,
+  },
 }));
 
-const ContentsTitle = ({ title }) => {
+const ContentsTitle = ({ title, optButton1, optButton2 }) => {
   const classes = useStyles();
 
   return (
     <div>
       <div className={classes.appBarSpacer} />
       <div className={classes.titleContainer}>
-        <span className={classes.title}>{title}</span>
+        <div className={classes.title}>{title}</div>
+        <div className={classes.optionArea}>
+          {optButton1}
+          {optButton2}
+        </div>
       </div>
       <Divider />
     </div>

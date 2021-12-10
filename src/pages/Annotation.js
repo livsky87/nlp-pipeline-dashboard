@@ -5,10 +5,14 @@ import ContentsContainer, {
   PageContainer,
 } from "../components/layout/ContentsContainer";
 
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import { FormatListBulleted, Save } from "@mui/icons-material";
+import AnnotationList from "./AnnotationList";
+import { Grid } from "@material-ui/core";
 
-const Annotation = () => {
+const Annotation = ({ match }) => {
+  const { id } = match.params;
+
   return (
     <PageContainer>
       <ContentsTitle
@@ -21,6 +25,14 @@ const Annotation = () => {
           firstName={"Annotation"}
           firstLink={"/annotaion"}
         />
+        <Grid container spacing={1}>
+          <Grid item xl={4} lg={12} md={12} sm={12} xs={12}>
+            <AnnotationList />
+          </Grid>
+          <Grid item xl={8} lg={12} md={12} sm={12} xs={12}>
+            <div>sdafsdaf</div>
+          </Grid>
+        </Grid>
       </ContentsContainer>
     </PageContainer>
   );

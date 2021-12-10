@@ -21,6 +21,7 @@ const Routers = () => {
       <Route exact path="/connections" component={Connections} />
       <Route exact path="/labels" component={Labels} />
       <Route exact path="/annotation" component={Annotation} />
+      <Route path="/annotation/:id" component={Annotation} />
       <Route exact path="/models" component={Models} />
     </PageContainer>
   );
